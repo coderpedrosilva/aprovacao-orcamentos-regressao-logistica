@@ -24,11 +24,15 @@ Demonstrar, de forma prática e didática, como funciona um motor de decisão co
 
 O modelo utiliza a equação:
 
+```text
 y = b₀ + b₁x₁ + b₂x₂ + b₃x₃ + b₄x₄ + b₅x₅
+```
 
 Aplicando a função sigmoide:
 
+```text
 p = 1 / (1 + e⁻ʸ)
+```
 
 Onde p representa a probabilidade de aprovação.
 
@@ -136,4 +140,4 @@ Este projeto demonstra:
 
 ---
 
-\📌 Projeto ideal para portfólio em Ciência de Dados, IA aplicada e sistemas de decisão comercial.
+📌 Projeto ideal para portfólio em Ciência de Dados, IA aplicada e sistemas de decisão comercial.
