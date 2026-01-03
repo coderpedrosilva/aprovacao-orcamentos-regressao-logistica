@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Aprovação de Orçamentos - Regressão Logística</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>SmartQuote AI</h2>
+        <p class="subtitle">Probabilidade de Aprovação de Orçamentos</p>
+
+        <div class="grid">
+            <input id="valor" placeholder="Valor do orçamento">
+            <input id="prazo" placeholder="Prazo (dias)">
+            <input id="desconto" placeholder="Desconto (%)">
+            <input id="relacionamento" placeholder="Relacionamento (1–5)">
+            <input id="historico" placeholder="Histórico de compras">
+        </div>
+
+        <button onclick="go()" class="btn">Calcular Probabilidade</button>
+
+        <div id="resultado" class="result"></div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
