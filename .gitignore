@@ -1,0 +1,13 @@
+__pycache__# datasets gerados
+data/train.csv
+data/test.csv
+
+# modelo treinado
+model/model.pkl
+
+# arquivos temporários python
+__pycache__/
+*.pyc
+
+# venv
+venv/
