@@ -1,8 +1,11 @@
+import sys, os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from flask import Flask, request, jsonify, send_from_directory
 import numpy as np
-import pickle, os
+import pickle
 
-app = Flask(__name__, static_folder="static")
+app = Flask(__name__, static_folder="static", static_url_path="")
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 data = pickle.load(open(os.path.join(BASE, "model", "model.pkl"), "rb"))
@@ -40,6 +43,7 @@ def predict():
 
 @app.route("/")
 def index():
-    return send_from_directory("static", "index.html")
+    return app.send_static_file("index.html")
+
 
 app.run(debug=True)
