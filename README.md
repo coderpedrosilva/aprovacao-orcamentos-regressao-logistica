@@ -28,7 +28,7 @@ O modelo utiliza a equação:
 y = b₀ + b₁x₁ + b₂x₂ + b₃x₃ + b₄x₄ + b₅x₅
 ```
 
-Aplicando a função sigmoide:
+\Aplicando a função sigmoide:
 
 ```text
 p = 1 / (1 + e⁻ʸ)
@@ -44,7 +44,7 @@ Os coeficientes `b` não são definidos manualmente - eles são aprendidos autom
 
 O treinamento é o processo onde o algoritmo analisa milhares de exemplos de orçamentos e aprende quais características aumentam ou reduzem a chance de aprovação.
 
-Durante o treino, o modelo ajusta os coeficientes b₀, b₁, b₂, b₃, b₄, b₅ para minimizar erros de previsão.
+Durante o treino, o modelo ajusta os coeficientes `b₀, b₁, b₂, b₃, b₄, b₅` para minimizar erros de previsão.
 
 Esses coeficientes representam os pesos reais de cada variável na decisão comercial.
 
@@ -59,6 +59,22 @@ Esses coeficientes representam os pesos reais de cada variável na decisão come
 | Desconto (%) | Int | Percentual de desconto |
 | Relacionamento (1–5) | Int | Nível de relacionamento comercial |
 | Histórico de compras | Int | Quantidade de compras anteriores |
+
+---
+
+## ⚖️ Peso de cada Campo
+
+O modelo aprende automaticamente o impacto de cada variável no resultado final:
+
+| Campo | Impacto no Resultado |
+|------|---------------------|
+| Valor do orçamento | Impacto negativo (quanto maior, menor a chance) |
+| Prazo | Impacto positivo |
+| Desconto | Impacto negativo |
+| Relacionamento | Impacto muito positivo |
+| Histórico de compras | Impacto muito positivo |
+
+---
 
 Quanto maior o relacionamento e histórico, maior a probabilidade de aprovação.
 Quanto maior o valor e o desconto, menor a probabilidade.
@@ -75,6 +91,18 @@ Quanto maior o valor e o desconto, menor a probabilidade.
 
 ---
 
+## 🖥 Interface (vazia) 
+
+![Interface-vazia](assets/interface_vazia.png) 
+
+--- 
+
+## 🖥 Interface (com teste) 
+
+![Interface-teste](assets/interface-teste.png)
+
+---
+
 ## 📦 Requirements
 
 ```txt
@@ -83,19 +111,6 @@ numpy
 pandas
 scikit-learn
 ```
----
-
-## 🖥 Interface (vazia)
-
-![Interface-vazia](assets/interface_vazia.png)
-
-
----
-
-## 🖥 Interface (com teste)
-
-![Interface-teste](assets/interface-teste.png)
-
 
 ---
 
@@ -125,8 +140,8 @@ python api/app.py
 5. Acessar no navegador
 ```
 http://127.0.0.1:5000
-```
 
+```
 ---
 
 ## 💎 Valor do Projeto
