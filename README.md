@@ -36,7 +36,7 @@ p = 1 / (1 + e⁻ʸ)
 
 Onde `p` representa a probabilidade de aprovação.
 
-Os coeficientes `b` não são definidos manualmente — eles são aprendidos automaticamente durante o treinamento.
+Os coeficientes `b` não são definidos manualmente - eles são aprendidos automaticamente durante o treinamento.
 
 ---
 
