@@ -87,7 +87,7 @@ scikit-learn
 
 ## 🖥 Interface (vazia)
 
-![Interface-vazia](assets/interface-vazia.png)
+![Interface-vazia](assets/interface_vazia.png)
 
 
 ---
