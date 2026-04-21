@@ -114,9 +114,15 @@ O modelo é avaliado com threshold de 0.5 sobre o conjunto de teste (20% dos dad
 
 ---
 
-## 🖥 Interface (com teste)
+## 🖥 Interface (teste — aprovação positiva)
 
-![Interface com teste](assets/interface-teste-v2.png)
+![Interface com aprovação positiva](assets/interface-teste-1-v2.png)
+
+---
+
+## 🖥 Interface (teste — aprovação negativa)
+
+![Interface com aprovação negativa](assets/interface-teste-2-v2.png)
 
 ---
 
