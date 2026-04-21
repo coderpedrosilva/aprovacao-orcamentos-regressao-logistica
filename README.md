@@ -53,13 +53,15 @@ Esses coeficientes representam os pesos reais de cada variável na decisão come
 
 ## 🧾 Campos da Interface
 
-| Campo | Tipo | Significado |
-|------|-----|-------------|
-| Valor do orçamento | Float (R$) | Valor total do orçamento |
-| Prazo (dias) | Int | Prazo oferecido ao cliente |
-| Desconto (%) | Int | Percentual de desconto |
-| Relacionamento (1–5) | Int | Nível de relacionamento comercial |
-| Histórico de compras | Int | Quantidade de compras anteriores |
+| Campo | Tipo | Intervalo | Significado |
+|------|-----|-----------|-------------|
+| Valor do orçamento | Float (R$) | 300 – 8.000 | Valor total do orçamento |
+| Prazo (dias) | Int | 7 – 60 | Prazo oferecido ao cliente |
+| Desconto (%) | Int | 0 – 20 | Percentual de desconto |
+| Relacionamento | Int | 1 – 5 | Nível de relacionamento comercial |
+| Histórico de compras | Int | 0 – 20 | Quantidade de compras anteriores |
+
+Todos os campos são validados no cliente e no servidor. Entradas fora do intervalo retornam erro antes de qualquer predição.
 
 ---
 
@@ -142,7 +144,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-3. Executar pipeline de ML
+3. Executar pipeline de ML (gera dados, treina e avalia o modelo)
 ```bash
 python main.py
 ```
@@ -152,21 +154,44 @@ python main.py
 python api/app.py
 ```
 
+> Para habilitar o modo debug: `FLASK_DEBUG=true python api/app.py`
+
 5. Acessar no navegador
 ```
 http://127.0.0.1:5000
+```
+---
+
+## 🗂 Estrutura do Projeto
 
 ```
+├── data/
+│   └── gerar_dados.py       # Geração sintética com seed, ruído e split correto
+├── model/
+│   ├── logistic.py          # Regressão logística do zero (NumPy)
+│   ├── train.py             # Pipeline de treino com Z-score
+│   ├── evaluate.py          # Avaliação completa de métricas
+│   └── save_load.py         # Persistência do modelo
+├── api/
+│   ├── app.py               # API Flask com validação e tratamento de erros
+│   └── static/              # Interface web (HTML, CSS, JS)
+├── assets/                  # Screenshots da interface
+├── main.py                  # Orquestrador do pipeline completo
+└── requirements.txt
+```
+
 ---
 
 ## 💎 Valor do Projeto
 
 Este projeto demonstra:
-- Pipeline completo de Machine Learning
-- Modelo matematicamente explicável
-- API REST pronta para SaaS
-- Interface web interativa
-- Classificação probabilística real
+- Pipeline completo de Machine Learning do zero ao deploy
+- Modelo matematicamente explicável, sem uso de sklearn para treino
+- Geração de dados realista com ruído e split sem vazamento
+- Validação de entrada em duas camadas (cliente e servidor)
+- Avaliação com métricas além de accuracy (Precision, Recall, F1, ROC-AUC)
+- API REST com tratamento de erros e modo debug via variável de ambiente
+- Interface web com feedback visual por classificação de risco
 
 ---
 
