@@ -170,4 +170,4 @@ Este projeto demonstra:
 
 ---
 
-📌 Projeto ideal para portfólio em Ciência de Dados, IA aplicada e sistemas de decisão comercial.
+📌 Projeto de Ciência de Dados, IA aplicada e sistemas de decisão comercial.
