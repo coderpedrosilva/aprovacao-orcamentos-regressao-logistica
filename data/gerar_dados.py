@@ -1,19 +1,44 @@
-import random, pandas as pd
+import numpy as np
+import pandas as pd
+import os
+
+SEED = 42
+BASE = os.path.dirname(os.path.abspath(__file__))
 
 def gerar():
-    rows=[]
-    for _ in range(5000):
-        valor=random.uniform(300,8000)
-        prazo=random.randint(7,60)
-        desconto=random.randint(0,20)
-        relacionamento=random.randint(1,5)
-        historico=random.randint(0,20)
-        score = (valor<3000)+(prazo>20)+(desconto<10)+(relacionamento>=3)+(historico>=5)
-        aprovado=1 if score>=3 else 0
-        rows.append([valor,prazo,desconto,relacionamento,historico,aprovado])
+    rng = np.random.default_rng(SEED)
+    n = 5000
 
-    df=pd.DataFrame(rows,columns=["valor","prazo","desconto","relacionamento","historico","aprovado"])
-    df.sample(frac=0.8).to_csv("data/train.csv",index=False)
-    df.drop(df.sample(frac=0.8).index).to_csv("data/test.csv",index=False)
+    valor          = rng.uniform(300, 8000, n)
+    prazo          = rng.integers(7,  61,   n)
+    desconto       = rng.integers(0,  21,   n)
+    relacionamento = rng.integers(1,  6,    n)
+    historico      = rng.integers(0,  21,   n)
 
-gerar()
+    score = (
+        (valor < 3000).astype(int)         +
+        (prazo > 20).astype(int)           +
+        (desconto < 10).astype(int)        +
+        (relacionamento >= 3).astype(int)  +
+        (historico >= 5).astype(int)
+    )
+    aprovado = (score >= 3).astype(int)
+
+    # ~10% de ruído para simular incerteza do mundo real
+    noise_mask = rng.random(n) < 0.10
+    aprovado[noise_mask] = 1 - aprovado[noise_mask]
+
+    df = pd.DataFrame({
+        "valor":          valor,
+        "prazo":          prazo,
+        "desconto":       desconto,
+        "relacionamento": relacionamento,
+        "historico":      historico,
+        "aprovado":       aprovado,
+    })
+
+    train = df.sample(frac=0.8, random_state=SEED)
+    test  = df.drop(train.index)
+
+    train.to_csv(os.path.join(BASE, "train.csv"), index=False)
+    test.to_csv(os.path.join(BASE, "test.csv"),  index=False)

@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Aprovação de Orçamentos - Regressão Logística</title>
 <link rel="stylesheet" href="/style.css">
-
 </head>
 <body>
 
@@ -14,11 +13,26 @@
         <p class="subtitle">Probabilidade de Aprovação de Orçamentos</p>
 
         <div class="grid">
-            <input id="valor" placeholder="Valor do orçamento">
-            <input id="prazo" placeholder="Prazo (dias)">
-            <input id="desconto" placeholder="Desconto (%)">
-            <input id="relacionamento" placeholder="Relacionamento (1–5)">
-            <input id="historico" placeholder="Histórico de compras">
+            <label>
+                <span>Valor do orçamento (R$)</span>
+                <input id="valor" type="number" min="300" max="8000" step="1" placeholder="300 – 8.000">
+            </label>
+            <label>
+                <span>Prazo (dias)</span>
+                <input id="prazo" type="number" min="7" max="60" step="1" placeholder="7 – 60">
+            </label>
+            <label>
+                <span>Desconto (%)</span>
+                <input id="desconto" type="number" min="0" max="20" step="1" placeholder="0 – 20">
+            </label>
+            <label>
+                <span>Relacionamento</span>
+                <input id="relacionamento" type="number" min="1" max="5" step="1" placeholder="1 – 5">
+            </label>
+            <label class="full-width">
+                <span>Histórico de compras</span>
+                <input id="historico" type="number" min="0" max="20" step="1" placeholder="0 – 20">
+            </label>
         </div>
 
         <button onclick="go()" class="btn">Calcular Probabilidade</button>
