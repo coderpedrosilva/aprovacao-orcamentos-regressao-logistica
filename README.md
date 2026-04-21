@@ -108,13 +108,13 @@ O modelo é avaliado com threshold de 0.5 sobre o conjunto de teste (20% dos dad
 
 ## 🖥 Interface (vazia)
 
-![Interface vazia](assets/interface-vazia.png)
+![Interface vazia](assets/interface-vazia-v2.png)
 
 ---
 
 ## 🖥 Interface (com teste)
 
-![Interface com teste](assets/interface-teste.png)
+![Interface com teste](assets/interface-teste-v2.png)
 
 ---
 
