@@ -12,11 +12,12 @@ Retornando um valor entre 0 e 1, acompanhado de classificação interpretável.
 ## 🎯 Objetivo do Projeto
 
 Demonstrar, de forma prática e didática, como funciona um motor de decisão comercial baseado em Machine Learning, utilizando:
-- Regressão Logística
-- Função Sigmoide
-- Normalização (Z-score)
-- API REST com Flask
-- Interface Web interativa
+- Regressão Logística implementada do zero com NumPy
+- Função Sigmoide com estabilidade numérica
+- Normalização (Z-score) persistida junto ao modelo
+- Avaliação completa: Accuracy, Precision, Recall, F1-Score, ROC-AUC
+- API REST com Flask e validação de entrada
+- Interface Web interativa com feedback visual por status
 
 ---
 
@@ -83,23 +84,37 @@ Quanto maior o valor e o desconto, menor a probabilidade.
 
 ## 📊 Classificação
 
-| Probabilidade | Interpretação |
-|--------------|---------------|
-| ≥ 0.70 | Alta chance de aprovação |
-| 0.40 – 0.69 | Risco |
-| < 0.40 | Baixa chance |
+| Probabilidade | Status | Cor |
+|--------------|--------|-----|
+| ≥ 0.70 | Alta chance de aprovação | Verde |
+| 0.40 – 0.69 | Risco | Amarelo |
+| < 0.40 | Baixa chance | Vermelho |
 
 ---
 
-## 🖥 Interface (vazia) 
+## 📈 Métricas de Avaliação
 
-![Interface-vazia](assets/interface_vazia.png) 
+O modelo é avaliado com threshold de 0.5 sobre o conjunto de teste (20% dos dados):
 
---- 
+| Métrica | Descrição |
+|---------|-----------|
+| Accuracy | Percentual de acertos geral |
+| Precision | Dos aprovados previstos, quantos eram reais |
+| Recall | Dos aprovados reais, quantos foram capturados |
+| F1-Score | Média harmônica entre Precision e Recall |
+| ROC-AUC | Capacidade discriminativa geral do modelo |
 
-## 🖥 Interface (com teste) 
+---
 
-![Interface-teste](assets/interface-teste.png)
+## 🖥 Interface (vazia)
+
+![Interface vazia](assets/interface-vazia.png)
+
+---
+
+## 🖥 Interface (com teste)
+
+![Interface com teste](assets/interface-teste.png)
 
 ---
 
